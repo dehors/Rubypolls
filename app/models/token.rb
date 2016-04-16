@@ -6,6 +6,7 @@ class Token < ActiveRecord::Base
   	DateTime.now < self.expires_at
   end
   #verifica si no ha expirado
+
   private
 
   def generate_token
