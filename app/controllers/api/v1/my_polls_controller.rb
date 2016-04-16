@@ -1,6 +1,6 @@
 class Api::V1::MyPollsController < ApplicationController
 	before_action :authenticate , only: [:create, :update, :destroy]
-	before_action :set_poll, only: [:show, :update]
+	before_action :set_poll, only: [:show, :update, :destroy]
 
 	def index
 		@polls = MyPoll.all
@@ -25,7 +25,13 @@ class Api::V1::MyPollsController < ApplicationController
 		end
 	end
 	def destroy
-		
+		if @poll.user == @current_user
+			@poll.destroy
+			render json: { message: "Se ha eliminado" }
+		else
+			render json: { errors: "No tiene autorizado eliminar esa encuesta" }, status: 401
+		end
+
 	end 
 
 	private
