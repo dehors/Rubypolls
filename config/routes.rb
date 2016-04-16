@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
   namespace :api, defaults: { format: "json" } do
     namespace :v1 do
-      resources :users
+      resources :users, only: [:create]
+      #busca el controlador users_controller
+      resources :polls, controller: "my_polls", except: [:new, :edit]
+      #se le asigna el controlador my_polls
     end
     namespace :v2 do
       resources :users
