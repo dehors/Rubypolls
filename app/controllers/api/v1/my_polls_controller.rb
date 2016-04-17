@@ -11,7 +11,7 @@ class Api::V1::MyPollsController < ApplicationController
 	def create
 		@poll = @current_user.my_polls.new(my_polls_params)
 		if @poll.save
-			render "api/v1/my_polls/show"
+			render template: "api/v1/my_polls/show"
 		else
 			render json: {errors: @polls.errors.full_message}, status: :unprocessable_entity
 	    end
