@@ -6,7 +6,7 @@ class Api::V1::MyPollsController < ApplicationController
 		@polls = MyPoll.all
 	end
 	def show
-		@poll = MyPoll.find(params[:id])
+		
 	end
 	def create
 		@poll = @current_user.my_polls.new(my_polls_params)
@@ -17,24 +17,27 @@ class Api::V1::MyPollsController < ApplicationController
 	    end
 	end
 	def update
-		if @poll.user == @current_user
+		if authenticate_owner(@poll.user)
 			@poll.update(my_polls_params)
-			render "api/v1/my_polls/show"
-		else
-			render json: { errors: "No tiene autorizado modificar esa encuesta" }, status: 401
+			render "api/v1/my_polls/show"		
 		end
 	end
 	def destroy
-		if @poll.user == @current_user
+		if authenticate_owner(@poll.user)
 			@poll.destroy
 			render json: { message: "Se ha eliminado" }
-		else
-			render json: { errors: "No tiene autorizado eliminar esa encuesta" }, status: 401
-		end
-
+		end	
 	end 
 
 	private
+
+	def authenticate_owner(user)
+		if owner !=@current_user
+			render json: { errors: "No tiene autorizado eliminar esa encuesta" }, status: 401
+			return false
+		end
+		true		
+	end
 
 	def my_polls_params
 		params.require(:poll).permit(:title, :description, :expires_at)	
