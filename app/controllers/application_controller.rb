@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :null_session
  
+  protected
   
   def authenticate
   	token_str = params[:token]
@@ -15,4 +16,11 @@ class ApplicationController < ActionController::Base
   	end
 
   end
+
+  def authenticate_owner(user)
+    if owner !=@current_user
+      render json: { errors: "No tiene autorizado eliminar esa encuesta" }, status: 401
+   end    
+  end
+
 end
