@@ -5,6 +5,7 @@ Rails.application.routes.draw do
       #busca el controlador users_controller
       resources :polls, controller: "my_polls", except: [:new, :edit]
       #se le asigna el controlador my_polls
+      resources :questions, except: [:new, :edit]
     end
     namespace :v2 do
       resources :users

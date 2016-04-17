@@ -9,4 +9,4 @@ class MyPoll < ActiveRecord::Base
   	DateTime.now < self.expires_at
   end
 
-end
+end 
