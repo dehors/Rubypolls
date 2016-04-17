@@ -11,7 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160417005518) do
+ActiveRecord::Schema.define(version: 20160417150003) do
+
+  create_table "answers", force: :cascade do |t|
+    t.integer  "question_id", limit: 4
+    t.string   "description", limit: 255
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
+
+  add_index "answers", ["question_id"], name: "index_answers_on_question_id", using: :btree
 
   create_table "my_polls", force: :cascade do |t|
     t.integer  "user_id",     limit: 4
@@ -52,6 +61,7 @@ ActiveRecord::Schema.define(version: 20160417005518) do
     t.datetime "updated_at",             null: false
   end
 
+  add_foreign_key "answers", "questions"
   add_foreign_key "my_polls", "users"
   add_foreign_key "questions", "my_polls"
   add_foreign_key "tokens", "users"
