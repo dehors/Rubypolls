@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>CORS</title>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
+</head>
+<body ng-app="Test" ng-controller="MyController">
+<ul>
+	<li ng-repeat="encuesta in encuestas">
+		{{ encuesta.attributes.title }}
+	</li>
+</ul>
+<script>
+	var app = angular.module("Test", [])
+	.controller("MyController", function($scope, $http){
+		$http.get("http://localhost:3000/api/v1/polls")
+		.success(function(data){
+			$scope.encuestas = data.data
+			console.log(data);
+		})
+		.error(function(err){
+			console.log(err);
+		});
+	});
+</script>
+</body>
+</html>
