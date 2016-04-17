@@ -6,7 +6,7 @@ class Api::V1::AnswersController < ApplicationController
 
 
 	def create
-		@answer = answers.new(answers_params)
+		@answer = Answer.new(answers_params)
 		if @answer.save
 			render template: "api/v1/answers/show"
 		else
