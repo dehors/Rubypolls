@@ -6,6 +6,7 @@ Rails.application.routes.draw do
       resources :polls, controller: "my_polls", except: [:new, :edit] do
       #se le asigna el controlador my_polls
       resources :questions, except: [:new, :edit]
+      resources :answers, only: [:update, :destroy, :create]
       end      
     end
     namespace :v2 do

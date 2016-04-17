@@ -24,7 +24,7 @@ class Api::V1::QuestionsController < ApplicationController
 			render json: { error: @question.errors }, status: :unprocessable_entity
 		end
 	end
-	def delete
+	def destroy
 		@question.destroy
 		render json: { message: "Se ha eliminado" }
 	end
