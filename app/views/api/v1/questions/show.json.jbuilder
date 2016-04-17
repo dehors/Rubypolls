@@ -1,1 +1,1 @@
-json.(@poll, :id, :description)
+json.partial! "api/v1/resource", resource: @answer

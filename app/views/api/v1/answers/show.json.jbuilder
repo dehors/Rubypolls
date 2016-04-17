@@ -1,1 +1,0 @@
-json.(@poll, :id, :description, :question_id)

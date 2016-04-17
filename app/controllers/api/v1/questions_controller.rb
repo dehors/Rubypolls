@@ -3,9 +3,12 @@ class Api::V1::QuestionsController < ApplicationController
 	before_action :set_questions, only: [:show, :update, :delete]
 	before_action :set_poll
 	before_action(only: [:update, :destroy, :create]) { |controlador| controlador.authenticate_owner(@poll.user) }
+	
+	# api/v1/polls/:id/questions"
 	def index		
 		@questions = @poll.questions
 	end
+	# api/v1/polls/:id/questions/:id"
 	def show
 		
 	end
@@ -38,6 +41,6 @@ class Api::V1::QuestionsController < ApplicationController
 		params.require(:question).permit(:description)
 	end
 	def set_questions
-		@questions = Questions.find(params[:id])
+		@question = Question.find(params[:id])
 	end
 end

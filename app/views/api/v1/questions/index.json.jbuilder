@@ -1,3 +1,3 @@
 json.array!(@questions) do |question|
-  json.(questions, :id, :description)
+  json.partial! "api/v1/resource", resource: question
 end

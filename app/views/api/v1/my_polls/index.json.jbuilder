@@ -1,5 +1,3 @@
 json.array! @polls do |poll|
-  json.type "my_polls"
-  json.id poll.id
-  json.attributes poll.attributes
+  json.partial! "api/v1/resource", resource: poll
 end
