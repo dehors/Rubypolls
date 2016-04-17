@@ -7,7 +7,8 @@ Rails.application.routes.draw do
       #se le asigna el controlador my_polls
       resources :questions, except: [:new, :edit]
       resources :answers, only: [:update, :destroy, :create]
-      end      
+      end  
+      match "*unmatched", via: [:options], to: "master_api#xhr_options_request"    
     end
     namespace :v2 do
       resources :users

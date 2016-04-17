@@ -5,17 +5,13 @@
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
 </head>
 <body ng-app="Test" ng-controller="MyController">
-<ul>
-	<li ng-repeat="encuesta in encuestas">
-		{{ encuesta.attributes.title }}
-	</li>
-</ul>
+
 <script>
 	var app = angular.module("Test", [])
 	.controller("MyController", function($scope, $http){
-		$http.get("http://localhost:3000/api/v1/polls")
+		$http.post("http://localhost:3000/api/v1/polls",{poll:{title:"Mi encuesta", description:"Hola mundo", expires_at:""}})
 		.success(function(data){
-			$scope.encuestas = data.data
+			//$scope.encuestas = data.data
 			console.log(data);
 		})
 		.error(function(err){
