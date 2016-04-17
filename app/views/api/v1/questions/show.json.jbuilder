@@ -1,1 +1,1 @@
-json.partial! "api/v1/resource", resource: @answer
+json.partial! "api/v1/resource", resource: @question

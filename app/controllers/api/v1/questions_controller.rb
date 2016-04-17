@@ -1,4 +1,4 @@
-class Api::V1::QuestionsController < ApplicationController
+class Api::V1::QuestionsController < Api::V1::MasterApiController
 	before_action :authenticate , only: [:create, :update, :destroy]
 	before_action :set_questions, only: [:show, :update, :delete]
 	before_action :set_poll

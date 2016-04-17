@@ -1,4 +1,4 @@
-class Api::V1::AnswersController < ApplicationController
+class Api::V1::AnswersController < Api::V1::MasterApiController
 	before_action :authenticate , only: [:index, :show]
 	before_action :set_answer, only: [:update, :delete]
 	before_action :set_poll
