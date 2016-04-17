@@ -1,5 +1,5 @@
 class Api::V1::MyPollsController < ApplicationController
-	before_action :authenticate , only: [:create, :update, :destroy]
+	before_action :authenticate , only: [:index,:create, :update, :destroy]
 	before_action :set_poll, only: [:show, :update, :destroy]
 	before_action(only: [:update, :destroy]) { |controlador| controlador.authenticate_owner(@poll.user) }
 
