@@ -3,9 +3,10 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :users, only: [:create]
       #busca el controlador users_controller
-      resources :polls, controller: "my_polls", except: [:new, :edit]
+      resources :polls, controller: "my_polls", except: [:new, :edit] do
       #se le asigna el controlador my_polls
       resources :questions, except: [:new, :edit]
+      end      
     end
     namespace :v2 do
       resources :users
