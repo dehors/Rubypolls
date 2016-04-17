@@ -27,6 +27,10 @@ class ApplicationController < ActionController::Base
     response.status = status
     render template: "api/v1/errors"
   end
+  def error_array!(array, status)
+   @errors = @errors + array
+   render template: "api/v1/errors" 
+  end
   def authenticate_owner(user)
     if owner !=@current_user
       render json: { errors: "No tiene autorizado eliminar esa encuesta" }, status: 401
