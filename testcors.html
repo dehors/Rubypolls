@@ -9,7 +9,7 @@
 <script>
 	var app = angular.module("Test", [])
 	.controller("MyController", function($scope, $http){
-		$http.post("http://localhost:3000/api/v1/polls",{poll:{title:"Mi encuesta", description:"Hola mundo", expires_at:""}})
+		$http.post("http://localhost:3000/api/v1/polls",{poll:{title:"Mi encuesta", description:"Hola mundo", expires_at:""}, token:"afa9a13d6fd2c0b546298c7ae5e68fde"})
 		.success(function(data){
 			//$scope.encuestas = data.data
 			console.log(data);
