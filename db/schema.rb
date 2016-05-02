@@ -14,55 +14,51 @@
 ActiveRecord::Schema.define(version: 20160417150003) do
 
   create_table "answers", force: :cascade do |t|
-    t.integer  "question_id", limit: 4
-    t.string   "description", limit: 255
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+    t.integer  "question_id"
+    t.string   "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
-  add_index "answers", ["question_id"], name: "index_answers_on_question_id", using: :btree
+  add_index "answers", ["question_id"], name: "index_answers_on_question_id"
 
   create_table "my_polls", force: :cascade do |t|
-    t.integer  "user_id",     limit: 4
+    t.integer  "user_id"
     t.datetime "expires_at"
-    t.string   "title",       limit: 255
-    t.text     "description", limit: 65535
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.string   "title"
+    t.text     "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
-  add_index "my_polls", ["user_id"], name: "index_my_polls_on_user_id", using: :btree
+  add_index "my_polls", ["user_id"], name: "index_my_polls_on_user_id"
 
   create_table "questions", force: :cascade do |t|
-    t.integer  "my_poll_id",  limit: 4
-    t.text     "description", limit: 65535
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.integer  "my_poll_id"
+    t.text     "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
-  add_index "questions", ["my_poll_id"], name: "index_questions_on_my_poll_id", using: :btree
+  add_index "questions", ["my_poll_id"], name: "index_questions_on_my_poll_id"
 
   create_table "tokens", force: :cascade do |t|
     t.datetime "expires_at"
-    t.integer  "user_id",    limit: 4
-    t.string   "token",      limit: 255
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.integer  "user_id"
+    t.string   "token"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
-  add_index "tokens", ["user_id"], name: "index_tokens_on_user_id", using: :btree
+  add_index "tokens", ["user_id"], name: "index_tokens_on_user_id"
 
   create_table "users", force: :cascade do |t|
-    t.string   "email",      limit: 255
-    t.string   "name",       limit: 255
-    t.string   "provider",   limit: 255
-    t.string   "uid",        limit: 255
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.string   "email"
+    t.string   "name"
+    t.string   "provider"
+    t.string   "uid"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "answers", "questions"
-  add_foreign_key "my_polls", "users"
-  add_foreign_key "questions", "my_polls"
-  add_foreign_key "tokens", "users"
 end

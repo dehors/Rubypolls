@@ -46,8 +46,10 @@ group :development, :test do
 	gem "factory_girl_rails", "~>4.0"
 	gem 'capybara'
 	
-	gem 'web-console', '~> 2.0'
+
 	gem 'spring'
 end
-
+group :development do
+	gem 'web-console', '~> 2.0'
+end
 gem 'tzinfo-data', platforms: [:mingw, :mswin]
