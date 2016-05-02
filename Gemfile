@@ -41,11 +41,11 @@ gem "valid_email"
 
 group :development, :test do
 	gem 'byebug'
-	gem 'shoulda-matchers'
+	gem 'shoulda-matchers', require: false
 	gem 'rspec-rails'
 	gem "factory_girl_rails", "~>4.0"
 	gem 'capybara'
-	
+
 
 	gem 'spring'
 end
